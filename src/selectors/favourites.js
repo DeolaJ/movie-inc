@@ -5,7 +5,7 @@ const selectIsFetchingFavourites = (state) => state.movies.isFetchingFavourites;
 
 const selectFavourites = (state) => state.movies.favouritesList;
 
-export const selectFavouriteMovies = createSelector(
+const selectFavouriteMovies = createSelector(
   [selectIsFetchingFavourites, selectFavourites],
   (isFetching, favourites) => {
     if (!isFetching && isEmpty(favourites)) {
@@ -14,4 +14,5 @@ export const selectFavouriteMovies = createSelector(
     return isEmpty(favourites) ? Array(6).fill({}) : favourites;
   }
 );
+
 export default selectFavouriteMovies;

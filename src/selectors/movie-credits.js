@@ -5,7 +5,7 @@ const selectIsFetchingCredits = (state) => state.movies.isFetchingCredits;
 
 const selectCredits = (state) => state.movies.movieCredits.credits;
 
-export const selectMovieCredits = createSelector(
+const selectMovieCredits = createSelector(
   [selectIsFetchingCredits, selectCredits],
   (isFetching, movieCredits) => {
     if (!isFetching && isEmpty(movieCredits)) {
