@@ -7,8 +7,10 @@ const CharacterCard = ({ character }) => {
   const refContentPlaceholder = useRef();
 
   const removePlaceholder = () => {
-    refPlaceholder.current.remove();
     refContentPlaceholder.current.remove();
+    if (character.profile_path) {
+      refPlaceholder.current.remove();
+    }
   };
 
   const characterImage = () => {
