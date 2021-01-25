@@ -7,7 +7,9 @@ import Favourited from '../../assets/images/favourited.svg';
 import Button from './button';
 
 const FavouritesButton = ({ movieId }) => {
-  const [localFavourites, setLocalFavourites] = useState(localStorage.getItem('favouriteMovies'));
+  const [localFavourites, setLocalFavourites] = useState(
+    JSON.parse(localStorage.getItem('favouriteMovies')) || []
+  );
 
   const doFavouriteMovie = (id) => {
     const favourites = JSON.parse(localStorage.getItem('favouriteMovies'));
