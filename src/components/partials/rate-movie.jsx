@@ -28,6 +28,16 @@ const RateMovie = ({ movieId }) => {
     setTempRating(0);
   };
 
+  const getRatingIcon = () => {
+    if (isRating) {
+      return Close;
+    }
+    if (ratingValue === 0) {
+      return Rate;
+    }
+    return Rated;
+  };
+
   useEffect(() => {
     if (!guestId && isRating) {
       dispatch(actions.doGuestAuthAPI());
@@ -40,7 +50,7 @@ const RateMovie = ({ movieId }) => {
         <Button
           type="icon"
           title="Rate this movie once"
-          iconLink={isRating ? Close : Rate}
+          iconLink={getRatingIcon()}
           className="rate-button"
           text="Rate this movie"
           onClick={() => setIsRating(!isRating)}
