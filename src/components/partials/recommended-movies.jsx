@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
+import isEmpty from 'lodash/isEmpty';
 import { useDispatch, useSelector } from 'react-redux';
 
 import actions from '../../actions';
@@ -20,11 +21,15 @@ const RecommendedMovies = ({ movieId }) => {
   return (
     <article className="recommended-movies">
       <h3>Recommended Movies</h3>
-      <div>
-        {recommendedMovies.map((movie, index) => (
-          <MovieCard key={movie.id ? `${movie.id}-${index}` : index} movie={movie} />
-        ))}
-      </div>
+      {isEmpty(recommendedMovies) ? (
+        <p>There are no recommended movies</p>
+      ) : (
+        <div>
+          {recommendedMovies.map((movie, index) => (
+            <MovieCard key={movie.id ? `${movie.id}-${index}` : index} movie={movie} />
+          ))}
+        </div>
+      )}
     </article>
   );
 };
