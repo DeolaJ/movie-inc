@@ -17,6 +17,8 @@
   &__loaded-image {
     border-radius: .5rem;
     width: 220px;
+    position: absolute;
+    left: 0;
     object-fit: cover;
     display: block;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
@@ -108,6 +110,8 @@
 
   .lazyload-wrapper {
     border-radius: .5rem;
+    height: 330px;
+    width: 220px;
   }
 
   .favourites-button {

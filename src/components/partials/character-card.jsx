@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import LazyLoad from 'react-lazyload';
 
 const CharacterCard = ({ character }) => {
+  const characterCardRef = useRef();
   const refPlaceholder = useRef();
   const refContentPlaceholder = useRef();
 
@@ -10,6 +11,8 @@ const CharacterCard = ({ character }) => {
     refContentPlaceholder.current.remove();
     if (character.profile_path) {
       refPlaceholder.current.remove();
+    } else {
+      characterCardRef.current.querySelector('.lazyload-wrapper').style.display = 'none';
     }
   };
 
@@ -21,16 +24,11 @@ const CharacterCard = ({ character }) => {
   };
 
   return (
-    <div className="character-card">
-      <div className="character-card__placeholder" ref={refPlaceholder} />
+    <div className="character-card" ref={characterCardRef}>
+      <div className="character-card__body">
+        <div className="character-card__placeholder" ref={refPlaceholder} />
 
-      <div className="character-card__placeholder-content" ref={refContentPlaceholder}>
-        <div />
-        <div />
-      </div>
-
-      {character.name && (
-        <>
+        {character.name && (
           <LazyLoad once offset={300}>
             <img
               className="character-card__loaded-image"
@@ -40,12 +38,19 @@ const CharacterCard = ({ character }) => {
               alt={character.name}
             />
           </LazyLoad>
+        )}
+      </div>
 
-          <div className="character-card__content">
-            <h4>{character.name}</h4>
-            <p>{character.character.replace(' (voice)', '')}</p>
-          </div>
-        </>
+      <div className="character-card__placeholder-content" ref={refContentPlaceholder}>
+        <div />
+        <div />
+      </div>
+
+      {character.name && (
+        <div className="character-card__content">
+          <h4>{character.name}</h4>
+          <p>{character.character.replace(' (voice)', '')}</p>
+        </div>
       )}
     </div>
   );

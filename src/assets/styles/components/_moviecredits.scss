@@ -7,6 +7,7 @@
     padding-bottom: 1rem;
     display: grid;
     gap: 1.125rem;
+    place-content: space-between;
     grid-template-columns: repeat(auto-fill, 138px);
 
     @media (min-width: $breakpoint-mobile) {
