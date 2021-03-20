@@ -44,7 +44,7 @@ const FavouritesButton = ({ movieId }) => {
 
   return (
     <article className="favourites-button">
-      {localFavourites.includes(movieId) ? (
+      {localFavourites && localFavourites.includes(movieId) ? (
         <Button
           type="icon"
           iconLink={Favourited}
